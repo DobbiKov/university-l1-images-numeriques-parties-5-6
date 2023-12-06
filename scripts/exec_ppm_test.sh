@@ -1,0 +1,1 @@
+clang++ -std=c++11 -Wall ./ppm_lib/ppm.cpp ./ppm-test.cpp -o ./build/ppm-test && ./build/ppm-test
