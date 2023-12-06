@@ -1,0 +1,1 @@
+clang++ -std=c++11 -Wall ./ppm_lib/ppm.cpp ./gris_couleurs/gris-couleurs.cpp gris-couleurs-test.cpp -o ./build/gris-couleurs-test && ./build/gris-couleurs-test

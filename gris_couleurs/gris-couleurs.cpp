@@ -2,7 +2,15 @@
 /** @file
  * Filtres de conversion couleur <-> teintes de gris
  **/
+
+#include <vector>
+#ifndef IMAGE_H
+#define IMAGE_H
+    #include "../image.hpp"
+#endif
 #include "gris-couleurs.hpp"
+
+using namespace std;
 
 ImageGris CouleurAuGris( Image img ) {
     if(img.size() == 0)

@@ -2,7 +2,10 @@
  * Filtres de conversion couleur <-> teintes de gris
  **/
 
-#include "../image.hpp"
+#ifndef IMAGE_H
+#define IMAGE_H
+    #include "../image.hpp"
+#endif
 
 /// BEGIN griscouleurh
 

@@ -1,7 +1,11 @@
-#include <iostream>
-#include <fstream>
 #include <stdexcept>
+#include <fstream>
+#include <vector>
 
+#ifndef IMAGE_H
+#define IMAGE_H
+    #include "../image.hpp"
+#endif
 #include "ppm.hpp"
 
 using namespace std;

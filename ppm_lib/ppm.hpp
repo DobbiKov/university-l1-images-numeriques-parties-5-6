@@ -3,7 +3,13 @@
  **/
 
 #include <string>
-#include "../image.hpp"
+
+#ifndef IMAGE_H
+#define IMAGE_H
+    #include "../image.hpp"
+#endif
+
+using namespace std;
 
 /// BEGIN ppmh
 
