@@ -136,3 +136,13 @@ Image superPixel(Image img, double lambda, int mu, int nbAmeliorations);
 Image bordurePixels(Image img);
 
 /// END SOLUTION
+
+/** Construit un point
+ * @param i l'indice i d'un pixel
+ * @param j l'indice j d'un pixel
+ * @param r la couleur rouge d'un pixel
+ * @param g la couleur vert d'un pixel
+ * @param b la couleur bleu d'un pixel
+ * @return un point 
+*/
+Point consrtuireUnPointDePixel(int i, int j, double r, double g, double b);

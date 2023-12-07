@@ -30,7 +30,6 @@ Image lirePPM(string source){
     }
 
     double value;
-    int pixel_count = 0;
     for(int i = 0; i < lignes; i++){
         for(int j = 0; j < colonnes; j++){
             Couleur color;

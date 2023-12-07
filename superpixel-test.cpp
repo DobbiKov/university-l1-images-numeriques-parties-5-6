@@ -96,8 +96,8 @@ int main(){
     plusProcheVoisinTest();
     cerr << "Tests de la fonction KMoyenne" << endl;
     KMoyenneTest();
-    // cerr << "Tests de la fonction superPixel" << endl;
-    // superPixelTest();
+    cerr << "Tests de la fonction superPixel" << endl;
+    superPixelTest();
 
 
     // Remplacez cette ligne et la suivante par le code adéquat

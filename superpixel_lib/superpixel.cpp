@@ -59,7 +59,6 @@ Point barycentre(EnsemblePoints Q) {
     if(Q[0].size() == 0)
         throw runtime_error("Le point est vide!");
     
-    int iteration = 1;
     Point barycentre = Point(Q[0].size());
     for(int i = 0; i < Q.size(); i++){
         for(int j = 0; j < Q[i].size(); j++){
@@ -119,22 +118,62 @@ EnsemblePoints FAST_KMoyenne(EnsemblePoints P,EnsemblePoints C, int nbAmeliorati
 }
 
 EnsemblePoints pivotSuperPixel(Image img, double lambda, int mu) {
-    // Remplacez cette ligne et la suivante par le code adéquat
-    throw runtime_error("Fonction pivotSuperPixel non implantée ligne 74");
+    EnsemblePoints new_ensemble = EnsemblePoints(0);
+    for(int i = 0; i < img.size(); i += mu){
+        for(int j = 0; j < img[i].size(); j += mu){
+            Couleur color = img[ i ][ j ];
+            Point point = consrtuireUnPointDePixel(i, j, lambda * img[i][j].r, lambda * img[i][j].g, lambda * img[i][j].b);
+
+            new_ensemble.push_back(point);
+        }
+    }
+    return new_ensemble;
 }
 
 EnsemblePoints superPixels(Image img,double lambda, int mu, int nbAmeliorations) {
-    // Remplacez cette ligne et la suivante par le code adéquat
-    throw runtime_error("Fonction superPixels non implantée ligne 79");
+    EnsemblePoints img_points = EnsemblePoints(0);
+    for(int i = 0; i < img.size(); i++){
+        for(int j = 0; j < img[i].size(); j++){
+            Point img_point = consrtuireUnPointDePixel(i, j, lambda * img[i][j].r, lambda * img[i][j].g, lambda * img[i][j].b);
+
+            img_points.push_back(img_point);
+        }
+    }
+    return FAST_KMoyenne(img_points, pivotSuperPixel(img, lambda, mu), nbAmeliorations);
 }
 
 Image superPixel(Image img, double lambda, int mu, int nbAmeliorations) {
-    // Remplacez cette ligne et la suivante par le code adéquat
-    throw runtime_error("Fonction superPixel non implantée ligne 84");
+    Image new_image = Image(img.size());
+    for(int i = 0; i < img.size(); i++){
+        new_image[i] = vector<Couleur>(img[i].size());
+    }
+    EnsemblePoints super_pixels = superPixels(img, lambda, mu, nbAmeliorations);
+
+    for(int i = 0; i < img.size(); i++){
+        for(int j = 0; j < img[i].size(); j++){
+            Couleur pixel = img[i][j];
+            Point point = consrtuireUnPointDePixel(i, j, pixel.r, pixel.g, pixel.b);
+            Point point_associe = super_pixels[plusProcheVoisin(point, super_pixels)];
+
+            Couleur new_pixel;
+            new_pixel.r = point_associe[2];
+            new_pixel.g = point_associe[3];
+            new_pixel.b = point_associe[4];
+
+            new_image[i][j] = new_pixel;
+        }
+    }
+    return new_image;
 }
 
-
-
-// Ecrire votre code ici
+Point consrtuireUnPointDePixel(int i, int j, double r, double g, double b){
+    Point point = Point(5);
+    point[0] = i;
+    point[1] = j;
+    point[2] = r;
+    point[3] = g;
+    point[4] = b;
+    return point;
+}
 
 
