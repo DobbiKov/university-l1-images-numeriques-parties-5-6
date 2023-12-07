@@ -2,3 +2,6 @@
 build/
 
 ppm/
+*.out
+*.dSYM*/
+superpixel/
