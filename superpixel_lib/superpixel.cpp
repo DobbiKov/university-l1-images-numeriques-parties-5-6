@@ -73,8 +73,15 @@ Point barycentre(EnsemblePoints Q) {
 }
 
 EnsemblePoints KMoyenne(EnsemblePoints P,EnsemblePoints C, int nbAmeliorations) {
-    // Point temp_barycentre = barycentre(P);
-    // EnsemblePoints new_ensemble = sousEnsemble(P, C, temp_barycentre);
+    EnsemblePoints C_better_version = C;
+    EnsemblePoints C_new_better_version = C;
+    for(int i = 0; i < nbAmeliorations; i++){
+        for(int j = 0; j < C.size(); j++){
+            C_new_better_version[j] = barycentre(sousEnsemble(P, C_better_version, j));
+        }
+        C_better_version = C_new_better_version;
+    }
+    return C_better_version;
 }
 
 EnsemblePoints FAST_KMoyenne(EnsemblePoints P,EnsemblePoints C, int nbAmeliorations) {
