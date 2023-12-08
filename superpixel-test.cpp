@@ -85,19 +85,30 @@ void KMoyenneTest(){
         CHECK( abs( Cout[i][j] - CRef[i][j] ) <= 0.5 );
 }
 
+void bordTest(){
+    cout << "Vérifier que les images avec les bords obtenues dans 'superpixel/'" << endl;
+    ecrirePPM(bordurePixels(superPixel(lirePPM("images/Billes.256.ppm"), 1, 30, 25)),  "superpixel/bord_Billes.256.ppm");
+    ecrirePPM(bordurePixels(superPixel(lirePPM("images/Baboon.512.ppm"), 2, 60, 15)),  "superpixel/bord_Baboon.512.ppm");
+    ecrirePPM(bordurePixels(superPixel(lirePPM("images/Willis.512.ppm"), 1, 60, 15)),  "superpixel/bord_Willis.512.ppm");
+    
+}
+
 
 // Ecrire votre code ici
 
 
 int main(){
-    cerr << "Tests de la fonction distancePoints" << endl;
-    distancePointsTest();
-    cerr << "Tests de la fonction plusProcheVoisin" << endl;
-    plusProcheVoisinTest();
-    cerr << "Tests de la fonction KMoyenne" << endl;
-    KMoyenneTest();
-    cerr << "Tests de la fonction superPixel" << endl;
-    superPixelTest();
+    // cerr << "Tests de la fonction distancePoints" << endl;
+    // distancePointsTest();
+    // cerr << "Tests de la fonction plusProcheVoisin" << endl;
+    // plusProcheVoisinTest();
+    // cerr << "Tests de la fonction KMoyenne" << endl;
+    // KMoyenneTest();
+    // cerr << "Tests de la fonction superPixel" << endl;
+    // superPixelTest();
+
+    cerr << "Tests de la fonction bordurePixels" << endl;
+    bordTest();
 
 
     // Remplacez cette ligne et la suivante par le code adéquat

@@ -146,3 +146,9 @@ Image bordurePixels(Image img);
  * @return un point 
 */
 Point consrtuireUnPointDePixel(int i, int j, double r, double g, double b);
+/** Vérifie si les couleurs sont égaux
+ * @param color1 Couleur
+ * @param color2 Couleur
+ * @return bool: true si les couleurs sont égaux et false sinon
+*/
+bool areColorsEquals(Couleur color1, Couleur color2);

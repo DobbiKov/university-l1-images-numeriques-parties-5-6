@@ -55,7 +55,7 @@ EnsemblePoints sousEnsemble(EnsemblePoints P,EnsemblePoints C,int k) {
 
 Point barycentre(EnsemblePoints Q) {
     if(Q.size() == 0)
-        throw runtime_error("L'ensemble des points et vide!");
+        throw runtime_error("L'ensemble des points est vide!");
     if(Q[0].size() == 0)
         throw runtime_error("Le point est vide!");
     
@@ -164,6 +164,42 @@ Image superPixel(Image img, double lambda, int mu, int nbAmeliorations) {
         }
     }
     return new_image;
+}
+
+Image bordurePixels(Image img){
+    if(img.size() == 0)
+        throw runtime_error("L'image est vide!");
+    if(img[0].size() == 0)
+        throw runtime_error("L'image est vide!");
+
+    Image new_image = Image(img.size());
+    for(int i = 0; i < img.size(); i++){
+        new_image[i] = vector<Couleur>(img[i].size());
+    }
+
+    for(int i = 0; i < img.size(); i++){
+        for(int j = 0; j < img[i].size(); j++){
+            new_image[i][j] = img[i][j];
+        }
+    }
+
+    for(int i = 1; i < new_image.size(); i++){
+        for(int j = 1; j < new_image[i].size(); j++){
+            if(!areColorsEquals(img[i-1][j], img[i][j]) || !areColorsEquals(img[i][j-1], img[i][j])){
+                Couleur bleu;
+                bleu.r = 0;
+                bleu.g = 0;
+                bleu.b = 255;
+                new_image[i][j] = bleu;
+            }
+
+        }
+    }
+    return new_image;
+}
+
+bool areColorsEquals(Couleur color1, Couleur color2){
+    return color1.r == color2.r && color1.g == color2.g && color1.b == color2.b;
 }
 
 Point consrtuireUnPointDePixel(int i, int j, double r, double g, double b){
