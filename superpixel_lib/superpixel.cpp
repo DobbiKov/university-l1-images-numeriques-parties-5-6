@@ -152,13 +152,13 @@ Image superPixel(Image img, double lambda, int mu, int nbAmeliorations) {
     for(int i = 0; i < img.size(); i++){
         for(int j = 0; j < img[i].size(); j++){
             Couleur pixel = img[i][j];
-            Point point = consrtuireUnPointDePixel(i, j, pixel.r, pixel.g, pixel.b);
+            Point point = consrtuireUnPointDePixel(i, j, lambda * pixel.r, lambda * pixel.g, lambda * pixel.b);
             Point point_associe = super_pixels[plusProcheVoisin(point, super_pixels)];
 
             Couleur new_pixel;
-            new_pixel.r = point_associe[2];
-            new_pixel.g = point_associe[3];
-            new_pixel.b = point_associe[4];
+            new_pixel.r = point_associe[2] / lambda;
+            new_pixel.g = point_associe[3] / lambda;
+            new_pixel.b = point_associe[4] / lambda;
 
             new_image[i][j] = new_pixel;
         }

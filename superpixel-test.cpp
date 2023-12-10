@@ -38,14 +38,15 @@ void plusProcheVoisinTest() {
 /** Test du filtre SuperPixel **/
 void superPixelTest() {
     // TODO: beaucoup d'étudiants ont eu 128.91
-    // CHECK( ImageGrisEgal(CouleurAuGris(superPixel( imgTest, 2, 60, 15 )),
-    //           ImageGris( {
-    //               {71.971, 71.971, 71.971, 71.971},
-    //               {71.971, 71.971, 71.971, 71.971},
-    //               {71.971, 71.971, 71.971, 71.971},
-    //               {71.971, 71.971, 71.971, 71.971}
-    //               }),
-    //           0.001) );
+    ImageGris test = CouleurAuGris(superPixel( imgTest, 2, 60, 15 ));
+    CHECK( ImageGrisEgal(CouleurAuGris(superPixel( imgTest, 2, 60, 15 )),
+              ImageGris( {
+                  {128.91, 128.91, 128.91, 128.91},
+                  {128.91, 128.91, 128.91, 128.91},
+                  {128.91, 128.91, 128.91, 128.91},
+                  {128.91, 128.91, 128.91, 128.91}
+                  }),
+              0.001) );
     cout << "Vérifier que les images obtenues dans 'superpixel/' sont semblables à celles fournies dans 'superpixel/correction/'" << endl;
     ecrirePPM(superPixel(lirePPM("images/Billes.256.ppm"), 1, 30, 25),  "superpixel/Billes.256.ppm");
     ecrirePPM(superPixel(lirePPM("images/Baboon.512.ppm"), 2, 60, 15),  "superpixel/Baboon.512.ppm");
@@ -98,14 +99,14 @@ void bordTest(){
 
 
 int main(){
-    // cerr << "Tests de la fonction distancePoints" << endl;
-    // distancePointsTest();
-    // cerr << "Tests de la fonction plusProcheVoisin" << endl;
-    // plusProcheVoisinTest();
-    // cerr << "Tests de la fonction KMoyenne" << endl;
-    // KMoyenneTest();
-    // cerr << "Tests de la fonction superPixel" << endl;
-    // superPixelTest();
+    cerr << "Tests de la fonction distancePoints" << endl;
+    distancePointsTest();
+    cerr << "Tests de la fonction plusProcheVoisin" << endl;
+    plusProcheVoisinTest();
+    cerr << "Tests de la fonction KMoyenne" << endl;
+    KMoyenneTest();
+    cerr << "Tests de la fonction superPixel" << endl;
+    superPixelTest();
 
     cerr << "Tests de la fonction bordurePixels" << endl;
     bordTest();
