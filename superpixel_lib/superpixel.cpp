@@ -122,7 +122,7 @@ EnsemblePoints pivotSuperPixel(Image img, double lambda, int mu) {
     for(int i = 0; i < img.size(); i += mu){
         for(int j = 0; j < img[i].size(); j += mu){
             Couleur color = img[ i ][ j ];
-            Point point = consrtuireUnPointDePixel(i, j, lambda * img[i][j].r, lambda * img[i][j].g, lambda * img[i][j].b);
+            Point point = consrtuireUnPointDePixel(i, j, lambda * color.r, lambda * color.g, lambda * color.b);
 
             new_ensemble.push_back(point);
         }
