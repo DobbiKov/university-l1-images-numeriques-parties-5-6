@@ -3,6 +3,10 @@
  * Filtre Super Pixel
  **/
 #include <cmath>
+#ifndef IMAGE_H
+#define IMAGE_H
+    #include "../image.hpp"
+#endif
 #include "superpixel.hpp"
 
 double distancePoints(Point p, Point c) {

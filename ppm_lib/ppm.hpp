@@ -11,7 +11,7 @@
 
 using namespace std;
 
-/// BEGIN ppmh
+/// BEGIN ppm
 
 /** Lit une image au format PPM, retourne un tableau de Couleur
  * @param source vers une image .ppm
